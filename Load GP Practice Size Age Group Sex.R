@@ -47,6 +47,8 @@ conn <-odbcDriverConnect(connection=
 # Save dataframe to SQL to use later
 sqlSave(conn, gp_all_df, "gp_age_sex_2014_17_narrow")
 
+sqlSave(conn, gp_df, "gp_age_sex_2014_17_wide")
+
 
 
 
