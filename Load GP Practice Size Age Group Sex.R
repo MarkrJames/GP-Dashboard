@@ -14,9 +14,9 @@ gp_df <- read_excel(path = "C:\\Users\\mrmar\\Desktop\\R Projects\\Wales Practic
 
 # Add new columns to sum those above 65.  Needed in analayis later on as over 65s are weighted differenlty when using PU (Prescibing Units) calcs
 gp_df <- gp_df %>% 
-  mutate('both_65+' = rowSums(gp_dff[12:14] + gp_dff[19:21]),
-         'm_65+'   = rowSums(gp_dff[12:14]),
-         'f_65+'   = rowSums(gp_dff[19:21])
+  mutate('total_65+' = rowSums(gp_df[12:14] + gp_df[19:21]),
+         'm_65+'   = rowSums(gp_df[12:14]),
+         'f_65+'   = rowSums(gp_df[19:21])
   )
 
 # Gather all columns except for first 4 (Year, LHB, cluster, wcode) into narrow format
@@ -27,12 +27,12 @@ gp_all_df <- gp_df  %>%
     AgeGroup = case_when(
       substr(key,1,2) %in% c('m_', 'f_') ~ substr(key,3,8),
       key %in% c('total', 'male', 'female') ~ "All",
-      key == 'both_65+' ~ '65+'
+      key == 'total_65+' ~ '65+'
     ),
     Sex = case_when(
       substr(key,1,1) == 'm' ~ "Male",
       substr(key,1,1) == 'f' ~ "Female",
-      substr(key,1,1) %in% c('t', 'B') ~ "Both"
+      substr(key,1,1) == 't' ~ "Both"
     )
   )
 
