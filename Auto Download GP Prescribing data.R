@@ -16,7 +16,7 @@
 # First file starts from Apr15 
 
 
-saveFolder <- "C:\\Users\\mrmar\\Desktop\\R Projects\\GP-Dashboard\\Input\\GP Prescribing\\"
+saveFolder <- ".\\Input\\GP Prescribing\\Zipped\\"
 
 dateRange <- seq(from = as.Date("2015/04/01"),    # as date needs day, not just month and year
                  to = Sys.Date(),                 # Use system data so don't need to update script each time run
@@ -31,7 +31,7 @@ for ( i in seq_along(dateRange)){
   
   downloadLink <- print(paste0('http://www.pcsdata.wales.nhs.uk/gpdata/gpdata',dateRange[i],".zip"))
   
-  fileName <- paste0(saveFolder,'gpdata',dateRange[i],'.zip')
+  fileName <- paste0(saveFolder, basename(downloadLink))
   
   if (!file.exists(fileName)) {
     download.file(downloadLink, destfile = fileName, mode = 'wb')
