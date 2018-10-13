@@ -7,10 +7,7 @@ conn <- odbcDriverConnect(connection = "Driver={SQL Server Native Client 11.0};
                                         server=localhost;
                                         database=dbHealth;
                                         trusted_connection=yes;")
-<<<<<<< HEAD
 
-=======
->>>>>>> 04214c5c28235d7cc330f3b1599a9ba1a79011c7
 # Create SQL table
 query_create <- "
                 CREATE TABLE [dbo].[GP_Prescribing](
@@ -41,11 +38,8 @@ date <- seq(from = as.Date("2016/01/01"),
 date <- format(as.Date(date), '%Y%m')
 
 # Loop through files and use SQL bulk insert into SQL DB
-<<<<<<< HEAD
 # Note *'* after FROM and before *"* in SQL statement
-=======
-# Note *'* after FROM and before *"* in SQL statment
->>>>>>> 04214c5c28235d7cc330f3b1599a9ba1a79011c7
+
 for ( i in seq_along(date) )
   {
     query_insert <-  paste0("BULK INSERT GP_Prescribing
