@@ -10,6 +10,8 @@ dateRange <- seq(from = as.Date("2015/04/01"),    # as date needs day, not just 
 
 dateRange <- format(as.Date(dateRange), '%Y%m')
 
+
+# TO DO - Look to replace for loop with purrr
 for ( i in seq_along(dateRange))
   {
   csvFile =  paste0(saveFolder,"\\GPData", dateRange[i], ".csv")
